@@ -31,7 +31,23 @@ func (s *server) ListStudents(ctx context.Context, req *pb.Empty) (*pb.StudentLi
 	log.Printf("Received request for list of student")
 
 	// Mock data
-	return &pb.StudentListResponse{}, nil
+	student := []*pb.StudentResponse{
+		{
+			Id:    100,
+			Name:  "Alice Johnson",
+			Major: "Computer Science",
+			Email: "alice@university.com",
+		}, {
+			Id:    200,
+			Name:  "Bob Smith",
+			Major: "Information Technology",
+			Email: "bob@university.com",
+		},
+	}
+
+	return &pb.StudentListResponse{
+		Student: student,
+	}, nil
 }
 
 func main() {
