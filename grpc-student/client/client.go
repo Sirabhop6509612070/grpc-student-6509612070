@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"encoding/json"
+	// "encoding/json"
 	"log"
 	"time"
 
@@ -23,22 +23,23 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	// res, err := client.GetStudent(ctx, &pb.StudentRequest{
-	// 	Id: 101,
-	// })
-	res, err := client.ListStudents(ctx, &pb.Empty{})
-	marshal, err := json.Marshal(res)
+	res, err := client.GetStudent(ctx, &pb.StudentRequest{
+		Id: 101,
+	})
+	// res, err := client.ListStudents(ctx, &pb.Empty{})
+	// marshal, err := json.Marshal(res)
 
 	if err != nil {
 		log.Fatalf("Error calling GetStudent: %v", err)
 	}
 
-	// log.Printf("Student Info:")
-	// log.Printf("ID: %d", res.Id)
-	// log.Printf("Name: %s", res.Name)
-	// log.Printf("Major: %s", res.Major)
-	// log.Printf("Email: %s", res.Email)
+	log.Printf("Student Info:")
+	log.Printf("ID: %d", res.Id)
+	log.Printf("Name: %s", res.Name)
+	log.Printf("Major: %s", res.Major)
+	log.Printf("Email: %s", res.Email)
+	log.Printf("Phone: %s", res.Phone)
 
-	log.Printf("Student list:")
-	log.Printf("%s", marshal)
+	// log.Printf("Student list:")
+	// log.Printf("%s", marshal)
 }

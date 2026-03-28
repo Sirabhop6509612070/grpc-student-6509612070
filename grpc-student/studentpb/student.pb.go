@@ -70,7 +70,8 @@ type StudentResponse struct {
 	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Major         string                 `protobuf:"bytes,3,opt,name=major,proto3" json:"major,omitempty"`
-	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"` // string phone = 5;
+	Email         string                 `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
+	Phone         string                 `protobuf:"bytes,5,opt,name=phone,proto3" json:"phone,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -129,6 +130,13 @@ func (x *StudentResponse) GetMajor() string {
 func (x *StudentResponse) GetEmail() string {
 	if x != nil {
 		return x.Email
+	}
+	return ""
+}
+
+func (x *StudentResponse) GetPhone() string {
+	if x != nil {
+		return x.Phone
 	}
 	return ""
 }
@@ -219,12 +227,13 @@ const file_proto_student_proto_rawDesc = "" +
 	"\n" +
 	"\x13proto/student.proto\x12\astudent\" \n" +
 	"\x0eStudentRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x05R\x02id\"a\n" +
+	"\x02id\x18\x01 \x01(\x05R\x02id\"w\n" +
 	"\x0fStudentResponse\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
 	"\x05major\x18\x03 \x01(\tR\x05major\x12\x14\n" +
-	"\x05email\x18\x04 \x01(\tR\x05email\"\a\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email\x12\x14\n" +
+	"\x05phone\x18\x05 \x01(\tR\x05phone\"\a\n" +
 	"\x05Empty\"I\n" +
 	"\x13StudentListResponse\x122\n" +
 	"\astudent\x18\x01 \x03(\v2\x18.student.StudentResponseR\astudent2\x8f\x01\n" +
